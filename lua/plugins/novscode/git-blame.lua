@@ -3,6 +3,5 @@ return {
 	opts = {
 		date_format = "%Y-%m-%d",
 		message_template = "<author>, <date> • <summary> • <sha>",
-		delay = 1000,
 	},
 }
