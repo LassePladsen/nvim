@@ -1,3 +1,4 @@
 return {
-    "unblevable/quick-scope",
+	"unblevable/quick-scope",
+	enabled = false,
 }

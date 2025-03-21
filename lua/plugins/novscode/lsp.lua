@@ -25,7 +25,7 @@ return {
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim",       opts = {} },
 
 			-- Allows extra capabilities provided by nvim-cmp
 			"hrsh7th/cmp-nvim-lsp",
@@ -70,7 +70,7 @@ return {
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map("<leader>ssw", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols"
-)
+					)
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -159,10 +159,8 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				-- pyright = {},
 
-				pylsp = {},
-				phpactor = {},
+				pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -173,6 +171,8 @@ return {
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
+				-- phpactor = {},
+				intelephense = {},
 
 				lua_ls = {
 					-- cmd = { ... },
@@ -220,6 +220,12 @@ return {
 						require("lspconfig")[server_name].setup(server)
 					end,
 				},
+			})
+
+			require('lspconfig').intelephense.setup({
+				root_dir = function () 
+					return vim.loop.cwd()
+				end,
 			})
 		end,
 	},
