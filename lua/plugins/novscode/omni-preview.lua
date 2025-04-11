@@ -12,7 +12,7 @@ return {
 			view = {
 				header_lnum = 0,
 				sticky_header = { enabled = true },
-				display_mode = "border"
+				display_mode = "border",
 			},
 			keymaps = {
 				-- Text objects for selecting fields
@@ -28,9 +28,9 @@ return {
 				jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
 			},
 		})
-		 require("peek").setup()
-        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+		require("peek").setup()
+		vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+		vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 
 		vim.keymap.set("n", "<leader>P", ":OmniPreview toggle<CR>", { silent = true })
 	end,
