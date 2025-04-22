@@ -16,7 +16,7 @@ return {
 			view = {
 				width = 20,
 				side = "right",
-
+				adaptive_size = true,
 			},
 			renderer = {
 				group_empty = true,
