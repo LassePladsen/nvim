@@ -20,7 +20,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "vertical",
-				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height=0.6 } },
+				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height = 0.6 } },
 			},
 			extensions = {
 				["ui-select"] = {
@@ -36,7 +36,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+		vim.keymap.set("n", "<leader>sf", function()
+			builtin.find_files({
+				no_ignore = true,
+				no_ignore_parent = true,
+			})
+		end, { desc = "[S]earch [F]iles" })
 		vim.keymap.set("n", "<leader>st", builtin.git_files, { desc = "[S]earch gi[T] files" })
 		vim.keymap.set("n", "<leader>sT", builtin.builtin, { desc = "[S]earch [T]elescope" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
