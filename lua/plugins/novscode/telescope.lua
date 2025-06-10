@@ -12,6 +12,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
+		{ "debugloop/telescope-undo.nvim" },
 
 		-- Useful for getting pretty icons, but requires a Nerd Font.
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
@@ -20,7 +21,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		require("telescope").setup({
 			defaults = {
 				layout_strategy = "vertical",
-				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height=0.6 } },
+				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height = 0.6 } },
 			},
 			extensions = {
 				["ui-select"] = {
@@ -32,6 +33,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		-- Enable Telescope extensions if they are installed
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+		pcall(require("telescope").load_extension, "undo")
 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -47,6 +49,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch buffers" })
 		vim.keymap.set("n", "<leader>sR", builtin.buffers, { desc = "[S]earch [R]egisters" })
+		vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "[U]ndo history" })
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
