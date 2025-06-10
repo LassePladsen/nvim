@@ -25,7 +25,7 @@ return {
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim",       opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- Allows extra capabilities provided by nvim-cmp
 			"hrsh7th/cmp-nvim-lsp",
@@ -69,8 +69,7 @@ return {
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
-					map("<leader>ssw", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols"
-					)
+					map("<leader>ssw", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
 					local rename_from_start = function()
@@ -230,8 +229,8 @@ return {
 				},
 			})
 
-			require('lspconfig').intelephense.setup({
-				root_dir = function () 
+			require("lspconfig").intelephense.setup({
+				root_dir = function()
 					return vim.loop.cwd()
 				end,
 			})
@@ -302,10 +301,10 @@ return {
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
 					{
-					  'rafamadriz/friendly-snippets',
-					  config = function()
-					    require('luasnip.loaders.from_vscode').lazy_load()
-					  end,
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
 					},
 				},
 			},
@@ -393,6 +392,34 @@ return {
 					{ name = "luasnip" },
 					{ name = "path" },
 				},
+			})
+		end,
+	},
+	{ -- Completion for cmdline and / search
+		"hrsh7th/cmp-cmdline",
+		config = function()
+			local cmp = require("cmp")
+			-- `/` cmdline setup.
+			cmp.setup.cmdline("/", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" },
+				},
+			})
+
+			-- `:` cmdline setup.
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{
+						name = "cmdline",
+						option = {
+							ignore_cmds = { "Man", "!" },
+						},
+					},
+				}),
 			})
 		end,
 	},
