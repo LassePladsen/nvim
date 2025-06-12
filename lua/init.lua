@@ -41,3 +41,8 @@ end
 -- 		vim.fn.setreg("l", "yoerror_log('" .. esc .. "pa: '" .. esc .. " . print_r(" .. esc .. "pa, true));" .. esc)
 -- 	end,
 -- })
+
+-- CUSTOM COMMANDS
+vim.api.nvim_create_user_command("DisableVirtualText", function()
+	vim.diagnostic.config({ virtual_text = false })
+end, { nargs = 0 })
