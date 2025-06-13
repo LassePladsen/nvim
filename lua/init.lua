@@ -1,3 +1,9 @@
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require("config.lazy")
 
 -- hightlight on yank
@@ -18,29 +24,6 @@ function _G.put(...)
 	print(table.concat(objects, "\n"))
 	return ...
 end
-
--- CUSTOM MACROS. Could use plugin debugprint instead
--- local esc = vim.api.nvim_replace_termcodes("<ESC>", true, true, true)
--- -- debug printing variable in visual selection for different filetypes
--- -- js and ts
--- vim.api.nvim_create_augroup("JSLogMacro", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", {
--- 	group = "JSLogMacro",
--- 	pattern = { "javascirpt", "typescript" },
--- 	callback = function()
--- 		vim.fn.setreg("l", "yoconsole.log('" .. esc .. "pa: ', " .. esc .. "pA);" .. esc)
--- 	end,
--- })
-
--- -- php
--- vim.api.nvim_create_augroup("PHPLogMacro", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", {
--- 	group = "PHPLogMacro",
--- 	pattern = { "php" },
--- 	callback = function()
--- 		vim.fn.setreg("l", "yoerror_log('" .. esc .. "pa: '" .. esc .. " . print_r(" .. esc .. "pa, true));" .. esc)
--- 	end,
--- })
 
 -- CUSTOM COMMANDS
 vim.api.nvim_create_user_command("DisableVirtualText", function()
