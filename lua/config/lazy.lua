@@ -26,7 +26,7 @@ require("lazy").setup({
 				return not vim.g.vscode
 			end,
 		},
-		{
+		{ 
 			import = "plugins.novscode.lsp",
 			cond = function()
 				return not vim.g.vscode

@@ -58,16 +58,17 @@ return {
 				map("<leader>ssw", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
-				local rename_from_start = function()
+
+				local rename_from_start = function() -- not sure if this is what bugged out my rename. I dont think so
 					vim.ui.input({ prompt = "New name: " }, function(input)
 						if input then
 							vim.lsp.buf.rename(input)
 						end
 					end)
 				end
-
 				map("<leader>rn", rename_from_start, "[R]e[n]ame")
 				map("<F2>", rename_from_start, "[R]e[n]ame")
+				map("<leader><F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
@@ -153,7 +154,7 @@ return {
 			-- gopls = {},
 
 			pyright = {},
-			-- rust_analyzer = {},
+			rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
 			-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -164,7 +165,11 @@ return {
 			-- ts_ls = {},
 			--
 			phpactor = {},
-			-- intelephense = {}, -- does not support rename...
+			intelephense = { -- does not support rename...? i think my setup is just bugged
+				root_dir = function()
+					return vim.loop.cwd()
+				end,
+			},
 
 			lua_ls = {
 				-- cmd = { ... },
@@ -182,19 +187,6 @@ return {
 			},
 		}
 
-		-- Ensure the servers and tools above are installed
-		--
-		-- To check the current status of installed tools and/or manually install
-		-- other tools, you can run
-		--    :Mason
-		--
-		-- You can press `g?` for help in this menu.
-		--
-		-- `mason` had to be setup earlier: to configure its options see the
-		-- `dependencies` table for `nvim-lspconfig` above.
-		--
-		-- You can add other tools here that you want Mason to install
-		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
@@ -212,12 +204,6 @@ return {
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
-		})
-
-		require("lspconfig").intelephense.setup({
-			root_dir = function()
-				return vim.loop.cwd()
-			end,
 		})
 	end,
 }
