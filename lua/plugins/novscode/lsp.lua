@@ -178,8 +178,8 @@ return {
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
-				-- phpactor = {},
-				intelephense = {},
+				phpactor = {},
+				-- intelephense = {}, -- does not support rename...
 
 				lua_ls = {
 					-- cmd = { ... },
