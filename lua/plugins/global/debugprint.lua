@@ -39,7 +39,7 @@ return {
 			["php"] = {
 				left = "error_log('",
 				right = "\\n', true));",
-				mid_var = "'. print_r(",
+				mid_var = "'. print_r($",
 				right_var = ", true));",
 			},
 		})
