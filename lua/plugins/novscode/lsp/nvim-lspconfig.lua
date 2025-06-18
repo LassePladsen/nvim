@@ -164,7 +164,11 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
 			--
-			-- phpactor = {},
+			-- phpactor = {
+			-- 	root_dir = function()
+			-- 		return vim.loop.cwd()
+			-- 	end,
+			-- },
 			intelephense = { -- does not support rename...? i think my setup is just bugged
 				-- root_dir = function()
 				-- 	return vim.loop.cwd()
