@@ -164,12 +164,18 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
 			--
-			-- phpactor = {
-			-- 	root_dir = function()
-			-- 		return vim.loop.cwd()
-			-- 	end,
+			-- phpactor = { -- only works in .git or composer projects........
+			-- 	-- root_dir = function()
+			-- 	-- 	return vim.loop.cwd()
+			-- 	-- end,
+			-- 	-- root_uri = function()
+			-- 	-- 	return vim.loop.cwd()
+			-- 	-- end,
+			-- 	-- on_new_config = function(config, root_dir)
+			-- 	-- 	config.root_uri = "file://" .. root_dir
+			-- 	-- end
 			-- },
-			intelephense = { -- does not support rename...? i think my setup is just bugged
+			intelephense = { -- does not support rename on free version........
 				-- root_dir = function()
 				-- 	return vim.loop.cwd()
 				-- end,
@@ -239,6 +245,10 @@ return {
 							-- "polylang",
 							-- "sbi",
 						},
+						-- format = {
+						-- 	enable = true,
+						-- 	braces = "k&r"
+						-- },
 					},
 				},
 			},
