@@ -37,6 +37,17 @@ return { -- Autoformat
 
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+
+			php = { "php_cs_fixer" },
+		},
+		formatters = {
+			php_cs_fixer = {
+				args = {
+					"fix",
+					"$FILENAME",
+					"--config=/home/lasse/repos/dotfiles/.php-cs-fixer-config.php",
+				},
+			},
 		},
 	},
 }
