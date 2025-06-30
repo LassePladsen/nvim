@@ -32,6 +32,6 @@ return {
 		vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
 		vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 
-		vim.keymap.set("n", "<leader>P", ":OmniPreview toggle<CR>", { silent = true, desc = "Omni[P]review file" })
+		vim.keymap.set("n", "<leader>P", ":OmniPreview start<CR>", { silent = true, desc = "Omni[P]review file" })
 	end,
 }
