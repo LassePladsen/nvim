@@ -124,14 +124,23 @@ return {
 		})
 
 		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-		--   local diagnostic_signs = {}
-		--   for type, icon in pairs(signs) do
-		--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		--   end
-		--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-		-- end
+		local diagnostic_config = {
+			-- error & warning virtual text as line below
+			virtual_text = false,
+			virtual_lines = { current_line = true },
+		}
+
+		if true or vim.g.have_nerd_font then -- override, this is nil for some reason...
+			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+			local diagnostic_signs = {}
+			for type, icon in pairs(signs) do
+				diagnostic_signs[vim.diagnostic.severity[type]] = icon
+			end
+			diagnostic_config.signs = { text = diagnostic_signs }
+
+		end
+
+		vim.diagnostic.config(diagnostic_config)
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
