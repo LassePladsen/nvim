@@ -55,6 +55,16 @@ end
 -- end)
 
 -- CUSTOM COMMANDS
-vim.api.nvim_create_user_command("DisableVirtualText", function()
-	vim.diagnostic.config({ virtual_text = false })
+vim.api.nvim_create_user_command("VirtualTextToggle", function()
+      local new = not vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = new })
+end, { nargs = 0 })
+vim.api.nvim_create_user_command("VirtualLineToggle", function()
+	local new
+	if vim.diagnostic.config().virtual_lines then
+		new = false
+	else
+		new = { current_line = true }
+	end
+	vim.diagnostic.config({ virtual_lines = new })
 end, { nargs = 0 })

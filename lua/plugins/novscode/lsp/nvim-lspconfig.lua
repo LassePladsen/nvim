@@ -123,13 +123,13 @@ return {
 			end,
 		})
 
-		-- Change diagnostic symbols in the sign column (gutter)
+		-- error & warning virtual text as line below
 		local diagnostic_config = {
-			-- error & warning virtual text as line below
-			virtual_text = false,
+			virtual_text = true,
 			virtual_lines = { current_line = true },
 		}
 
+		-- Change diagnostic symbols in the sign column (gutter)
 		if true or vim.g.have_nerd_font then -- override, this is nil for some reason...
 			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
 			local diagnostic_signs = {}
