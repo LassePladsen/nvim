@@ -22,8 +22,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			defaults = {
 				layout_strategy = "vertical",
 				layout_config = { height = 0.95, width = 0.95, vertical = { preview_height = 0.6 } },
-			},
-			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
@@ -43,7 +41,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>st", builtin.git_files, { desc = "[S]earch gi[T] files" })
 		vim.keymap.set("n", "<leader>sT", builtin.builtin, { desc = "[S]earch [T]elescope" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep in project" })
 		vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<F5>", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
@@ -52,6 +49,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch buffers" })
 		vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]egisters" })
 		vim.keymap.set("n", "<leader>U", "<cmd>Telescope undo<cr>", { desc = "[U]ndo history" })
+		-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep in project" })
+		-- Custom telescope live grep that supports file matching after a double space e.g. "pattern  *.tsx"
+		vim.keymap.set(
+			"n",
+			"<leader>sg",
+			require("config.telescope.multigrep").start,
+			{ desc = "[S]earch by [G]rep in project" }
+		)
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
