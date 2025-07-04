@@ -31,20 +31,23 @@ local function live_multigrep(opts)
 			---@diagnostic disable-next-line: deprecated
 			return vim.tbl_flatten({
 				args,
-				{ "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
+				{"--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
 			})
 		end,
-		entry_maker = make_entry.gen_from_vimgrep(opts),
+		entry_maker = make_entry.gen_from_vimgrep(vim.tbl_extend("force", opts, {
+			-- Enable highlighting for matches
+			only_sort_text = true,
+		})),
 		cwd = opts.cwd,
 	})
 
 	pickers
 		.new(opts, {
-			debounce = 100,
+			debounce = 80,
 			prompt_title = "Multi Grep",
 			finder = finder,
 			previewer = conf.grep_previewer(opts),
-			sorter = require("telescope.sorters").empty(),
+			sorter = require("telescope.sorters").highlighter_only(opts),
 		})
 		:find()
 end
