@@ -24,6 +24,7 @@
   "mason-tool-installer.nvim": { "branch": "main", "commit": "93a9ff9b34c91c0cb0f7de8d5f7e4abce51d8903" },
   "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
   "mini.hipatterns": { "branch": "main", "commit": "d71c21167d6bd5f21c9ecf90912c510f9edfc02b" },
+  "mini.icons": { "branch": "main", "commit": "94848dad1589a199f876539bd79befb0c5e3abf0" },
   "mini.nvim": { "branch": "main", "commit": "8f2ea1e69546d2606b97cb1c0e9458a1a0d2e73f" },
   "monokai-pro.nvim": { "branch": "master", "commit": "31bad737610ec211de086d373c73025f39de93cb" },
   "night-owl.nvim": { "branch": "main", "commit": "86ed124c2f7e118670649701288e024444bf91e5" },

@@ -15,7 +15,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		{ "debugloop/telescope-undo.nvim" },
 
 		-- Useful for getting pretty icons, but requires a Nerd Font.
-		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+		-- { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+		{ "echasnovski/mini.icons", opts = {}, enabled = vim.g.have_nerd_font },
 	},
 	config = function()
 		require("telescope").setup({
@@ -51,7 +52,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>U", "<cmd>Telescope undo<cr>", { desc = "[U]ndo history" })
 		-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep in project" })
 		-- Custom telescope live grep that supports file matching after a double space e.g. "pattern  *.tsx"
-		vim.keymap.set( "n", "<leader>sg", require("config.telescope.multigrep").start, { desc = "[S]earch by [G]rep in project cwd" })
+		vim.keymap.set(
+			"n",
+			"<leader>sg",
+			require("config.telescope.multigrep").start,
+			{ desc = "[S]earch by [G]rep in project cwd" }
+		)
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
