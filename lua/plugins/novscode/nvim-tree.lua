@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	enabled = true,
+	enabled = false,
 	config = function()
 		-- disable netrw at the very start of your init.lua
 		vim.g.loaded_netrw = 1
