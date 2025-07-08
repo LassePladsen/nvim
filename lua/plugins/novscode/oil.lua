@@ -8,6 +8,7 @@ return {
 		watch_for_changes = true,
 		delete_to_trash = false,
 		default_file_explorer = true, -- only works with lazy = false
+		 skip_confirm_for_simple_edits = true,
 		columns = {
 			"icon",
 			"permissions",
