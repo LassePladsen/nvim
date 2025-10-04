@@ -1,8 +1,6 @@
 return {
 	"pmizio/typescript-tools.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- lazy = false,
 	opts = {},
-	keys = {
-		{"F5", "TSToolsOrganizeImports", desc = "TS Tools Organize Imports"}
-	},
 }
