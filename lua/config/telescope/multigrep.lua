@@ -52,8 +52,8 @@ local function live_multigrep(opts)
 		:find()
 end
 
-M.start = function()
-	live_multigrep()
+M.start = function(opts)
+	live_multigrep(opts)
 end
 
 return M

@@ -81,5 +81,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
+
+		-- Shortcut for grepping your Neovim configuration
+		vim.keymap.set("n", "<leader>sN", function()
+			require("config.telescope.multigrep").start({ cwd = vim.fn.stdpath("config") })
+		end, { desc = "[S]earch by grep in [N]eovim files" })
 	end,
 }
