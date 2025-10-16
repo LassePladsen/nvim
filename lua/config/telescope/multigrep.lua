@@ -16,10 +16,10 @@ local function live_multigrep(opts)
 			end
 
 			local pieces = vim.split(prompt, "  ")
-			local args = { "rg" }
+			local args = { "rg" } 
 
 			if pieces[1] then
-				table.insert(args, "-e")
+				table.insert(args, "-F") -- -F uses fixed string, which is what i really want here
 				table.insert(args, pieces[1])
 			end
 
