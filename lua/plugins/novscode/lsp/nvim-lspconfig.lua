@@ -193,25 +193,7 @@ return {
 
 					-- disable all capabilities except rename:
 					-- Disable specific features but keep the textDocument table structure
-					client.server_capabilities.textDocument.completion = vim.NIL
-					client.server_capabilities.textDocument.hover = vim.NIL
-					client.server_capabilities.textDocument.signatureHelp = vim.NIL
-					client.server_capabilities.textDocument.definition = vim.NIL
-					client.server_capabilities.textDocument.typeDefinition = vim.NIL
-					client.server_capabilities.textDocument.implementation = vim.NIL
-					client.server_capabilities.textDocument.references = vim.NIL
-					client.server_capabilities.textDocument.documentHighlight = vim.NIL
-					client.server_capabilities.textDocument.documentSymbol = vim.NIL
-					client.server_capabilities.textDocument.codeAction = vim.NIL
-					client.server_capabilities.textDocument.codeLens = vim.NIL
-					client.server_capabilities.textDocument.formatting = vim.NIL
-					client.server_capabilities.textDocument.rangeFormatting = vim.NIL
-					client.server_capabilities.textDocument.documentLink = vim.NIL
-					client.server_capabilities.textDocument.colorProvider = vim.NIL
-					client.server_capabilities.textDocument.foldingRange = vim.NIL
-					client.server_capabilities.textDocument.selectionRange = vim.NIL
-					client.server_capabilities.textDocument.semanticTokens = vim.NIL
-					client.server_capabilities.textDocument.inlayHint = vim.NIL
+					client.server_capabilities.textDocument = {}
 
 					-- Keep rename enabled
 					client.server_capabilities.textDocument.rename = {
