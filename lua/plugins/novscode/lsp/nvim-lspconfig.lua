@@ -187,6 +187,10 @@ return {
 				-- end
 				-- cmd = { "phpactor", "language-server" },
 				-- filetypes = { "php" },
+				on_attach = function(client, bufnr)
+					-- Disable hover capability, using intelephense for this now
+					client.server_capabilities.hoverProvider = false
+				end,
 			},
 
 			intelephense = { -- does not support rename on free version........
