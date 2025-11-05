@@ -175,38 +175,31 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
 			--
-			phpactor = { -- only works in .git or composer projects........
-				-- root_dir = function()
-				-- 	return vim.loop.cwd()
-				-- end,
-				-- root_uri = function()
-				-- 	return vim.loop.cwd()
-				-- end,
-				-- on_new_config = function(config, root_dir)
-				-- 	config.root_uri = "file://" .. root_dir
-				-- end
-				-- cmd = { "phpactor", "language-server" },
-				-- filetypes = { "php" },
-				on_attach = function(client, bufnr)
-					-- 	-- Disable hover capability, using intelephense for this now
-					-- 	client.server_capabilities.hoverProvider = false
-
-					-- disable all capabilities except rename:
-					-- Disable specific features but keep the textDocument table structure
-					client.server_capabilities.textDocument = {}
-
-					-- Keep rename enabled
-					client.server_capabilities.textDocument.rename = {
-						dynamicRegistration = false,
-						prepareSupport = true,
-					}
-				end,
-			},
+			-- phpactor = { -- only works in .git or composer projects........
+			-- 	workspace_required = false,
+			-- 	-- root_dir = function()
+			-- 	-- 	return vim.loop.cwd()
+			-- 	-- end,
+			-- 	-- root_uri = function()
+			-- 	-- 	return vim.loop.cwd()
+			-- 	-- end,
+			-- 	on_new_config = function(config, root_dir)
+			-- 		config.root_uri = "file://" .. root_dir
+			-- 	end,
+			-- 	-- -- cmd = { "phpactor", "language-server" },
+			-- 	-- filetypes = { "php" },
+			-- 	on_attach = function(client, _)
+			-- 		-- disable all capabilities except rename:
+			-- 		client.server_capabilities.textDocument = {
+			-- 			rename = {
+			-- 				dynamicRegistration = false,
+			-- 				prepareSupport = true,
+			-- 			}
+			-- 		}
+			-- 	end,
+			-- },
 
 			intelephense = { -- does not support rename on free version........
-				-- root_dir = function()
-				-- 	return vim.loop.cwd()
-				-- end,
 				settings = {
 					intelephense = {
 						stubs = {
