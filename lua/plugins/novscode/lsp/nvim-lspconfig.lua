@@ -162,7 +162,8 @@ return {
 			-- clangd = {},
 			-- gopls = {},
 
-			pyright = {},
+			-- pyright = {},
+			pylsp = {},
 			rust_analyzer = {},
 			html = {},
 			jsonls = {},

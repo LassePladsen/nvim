@@ -33,7 +33,7 @@ return { -- Autoformat
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform can also run multiple formatters sequentially
-			python = {"ruff", "isort", "black" },
+			python = {"ruff_fix", "ruff_import", "ruff_format"},
 
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -51,6 +51,11 @@ return { -- Autoformat
 					"--config=/home/lasse/repos/dotfiles/.php-cs-fixer-config.php",
 				},
 			},
+			-- ruff = {
+			-- 	args = {
+			-- 		"format", "$FILENAME"
+			-- 	},
+			-- },
 		},
 	},
 }
