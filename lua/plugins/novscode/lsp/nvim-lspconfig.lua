@@ -117,7 +117,7 @@ return {
 				-- This may be unwanted, since they displace some of your code
 
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-				-- Default true. LP 2025-11-14
+					-- Default true. LP 2025-11-14
 					vim.lsp.inlay_hint.enable(true)
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -165,8 +165,16 @@ return {
 			-- clangd = {},
 			-- gopls = {},
 
-			pylsp = {},
-			basedpyright = {},
+			-- pylsp = {},
+			basedpyright = {
+				settings = {
+					basedpyright = {
+						analysis = {
+							typeCheckingMode = "basic",
+						},
+					},
+				},
+			},
 			rust_analyzer = {},
 			html = {},
 			jsonls = {},
