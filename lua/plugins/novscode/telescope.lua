@@ -51,8 +51,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch buffers" })
 		vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]egisters" })
 		vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>", { desc = "[S]earch [u]ndo history" })
-		vim.keymap.set("n", "<leader>sj", "<cmd>Telescope jumplist<cr>", { desc = "[S]earch [j]umplist" })
-		vim.keymap.set("n", "<leader>sc", "<cmd>Telescope command_history<cr>", { desc = "[S]earch [c]ommand history" })
+		vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [j]umplist" })
+		vim.keymap.set("n", "<leader>sc", builtin.command_history, { desc = "[S]earch [c]ommand history" })
+		vim.keymap.set("n", "<leader>sh", builtin.search_history, { desc = "[S]earch [h]istory" })
 		-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep in project" })
 		--
 		-- Custom telescope live grep that supports file matching after a double space e.g. "pattern  *.tsx"
