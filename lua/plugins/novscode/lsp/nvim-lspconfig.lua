@@ -175,7 +175,24 @@ return {
 					},
 				},
 			},
-			rust_analyzer = {},
+			rust_analyzer = {
+				-- cmd = { "rust-analyzer" },
+				-- settings = {
+				-- 	["rust-analyzer"] = {
+				-- 		files = { watcher = "server" },
+				-- 		cargo = { targetDir = true },
+				-- 		check = { command = "clippy" },
+				-- 		inlayHints = {
+				-- 			bindingModeHints = { enabled = true },
+				-- 			closureCaptureHints = { enabled = true },
+				-- 			closureReturnTypeHints = { enable = "always" },
+				-- 			maxLength = 100,
+				-- 		},
+				-- 		rustc = { source = "discover" },
+				-- 	},
+				-- },
+				-- root_markers = { { "Config.toml" }, ".git" },
+			},
 			html = {},
 			jsonls = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
