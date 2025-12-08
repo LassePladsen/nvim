@@ -175,6 +175,7 @@ return {
 					},
 				},
 			},
+			bashls = {},
 			rust_analyzer = {
 				-- cmd = { "rust-analyzer" },
 				-- settings = {
