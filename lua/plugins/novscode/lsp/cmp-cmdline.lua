@@ -1,5 +1,8 @@
 return { -- Completion for cmdline and / search
 	"hrsh7th/cmp-cmdline",
+	dependencies = {
+		"hrsh7th/nvim-cmp",
+	},
 	config = function()
 		local cmp = require("cmp")
 		-- `/` cmdline setup.
