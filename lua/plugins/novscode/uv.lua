@@ -11,4 +11,5 @@ return {
   opts = {
     picker_integration = true,
   },
+  keys = {},
 }

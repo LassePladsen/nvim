@@ -55,7 +55,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]egisters" })
 		vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [j]umplist" })
 		vim.keymap.set("n", "<leader>sc", builtin.command_history, { desc = "[S]earch [c]ommand history" })
-		vim.keymap.set("n", "<leader>sh", builtin.search_history, { desc = "[S]earch [h]istory" })
+		vim.keymap.set("n", "<leader>s/", builtin.search_history, { desc = "[S]earch [h]istory" })
 		vim.keymap.set("n", "<leader>gl", builtin.git_commits, { desc = "[g]it [l]og" })
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "[g]it [b]ranches" })
 		vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "[g]it [s]tatus" })
@@ -85,12 +85,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			)
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
-		vim.keymap.set("n", "<leader>s/", function()
-			builtin.live_grep({
-				grep_open_files = true,
-				prompt_title = "Live Grep in Open Files",
-			})
-		end, { desc = "[S]earch [/] in Open Files" })
+		-- vim.keymap.set("n", "<leader>s/", function()
+		-- 	builtin.live_grep({
+		-- 		grep_open_files = true,
+		-- 		prompt_title = "Live Grep in Open Files",
+		-- 	})
+		-- end, { desc = "[S]earch [/] in Open Files" })
 
 		-- Shortcut for searching your Neovim configuration files
 		vim.keymap.set("n", "<leader>sn", function()

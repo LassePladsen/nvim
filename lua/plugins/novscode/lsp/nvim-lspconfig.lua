@@ -66,7 +66,6 @@ return {
 						end
 					end)
 				end
-				map("<leader>rn", rename_from_start, "[R]e[n]ame")
 				map("<F2>", rename_from_start, "[R]e[n]ame")
 				map("<leader><F2>", vim.lsp.buf.rename, "[R]e[n]ame")
 
