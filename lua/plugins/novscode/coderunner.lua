@@ -17,10 +17,9 @@ return {
 				typescript = "node",
 				rust = {
 
-					"cd $dir &&",
-					"rustc $fileName &&",
-					"$dir/$fileNameWithoutExt &&",
-					"rm $dir/$fileNameWithoutExt",
+					"rustc $dir/$fileName -o /tmp/$fileNameWithoutExt &&",
+					"/tmp/$fileNameWithoutExt &&",
+					"rm /tmp/$fileNameWithoutExt",
 				},
 				c = "cd $dir && gcc $fileName -o /tmp/$fileNameWithoutExt && /tmp/$fileNameWithoutExt",
 				php = "php",
