@@ -25,6 +25,29 @@ function _G.put(...)
 	return ...
 end
 
+-- inlay hint config
+vim.api.nvim_set_hl(0, "LspInlayHint", {
+	fg = "#808080", 
+	bg = "NONE",       -- Remove background
+	italic = true, 
+	bold = true,
+})
+
+-- CUSTOM COMMANDS
+vim.api.nvim_create_user_command("VirtualTextToggle", function()
+      local new = not vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = new })
+end, { nargs = 0 })
+vim.api.nvim_create_user_command("VirtualLineToggle", function()
+	local new
+	if vim.diagnostic.config().virtual_lines then
+		new = false
+	else
+		new = { current_line = true }
+	end
+	vim.diagnostic.config({ virtual_lines = new })
+end, { nargs = 0 })
+
 -- use diagnostics open_float instead of virtual_lines https://oneofone.dev/post/neovim-diagnostics-float/
 -- DID NOT WORK!
 -- local group = vim.api.nvim_create_augroup("OoO", {})
@@ -53,18 +76,3 @@ end
 -- au("InsertLeave", nil, function()
 -- 	vim.diagnostic.enable(true)
 -- end)
-
--- CUSTOM COMMANDS
-vim.api.nvim_create_user_command("VirtualTextToggle", function()
-      local new = not vim.diagnostic.config().virtual_text
-      vim.diagnostic.config({ virtual_text = new })
-end, { nargs = 0 })
-vim.api.nvim_create_user_command("VirtualLineToggle", function()
-	local new
-	if vim.diagnostic.config().virtual_lines then
-		new = false
-	else
-		new = { current_line = true }
-	end
-	vim.diagnostic.config({ virtual_lines = new })
-end, { nargs = 0 })

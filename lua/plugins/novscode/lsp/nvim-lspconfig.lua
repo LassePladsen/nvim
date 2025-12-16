@@ -117,7 +117,15 @@ return {
 
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 					-- Default true. LP 2025-11-14
-					vim.lsp.inlay_hint.enable(true)
+					-- But if rust; workaround by enabling after a delay, it doesnt work on startup. LP 2025-12-16
+					if "rust" == vim.bo.filetype then
+						vim.defer_fn(function()
+							local mode = vim.api.nvim_get_mode().mode
+							vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+						end, 2500)
+					else
+						vim.lsp.inlay_hint.enable(true)
+					end
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
