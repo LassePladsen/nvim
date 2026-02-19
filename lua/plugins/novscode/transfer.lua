@@ -7,8 +7,8 @@ return {
 		{ "<leader>ti", "<cmd>TransferInit<cr>", desc = "Remote [T]ransfer [i]nit" },
 		{ "<leader>tu", "<cmd>TransferUpload<cr>", desc = "Remote [T]ransfer [u]pload" },
 		{ "<leader>td", "<cmd>TransferDownload<cr>", desc = "Remote [T]ransfer [d]ownload" },
-		{ "<leader>tD", "<cmd>TransferDirDiff .<cr>", desc = "Remote [T]ransfer [D]ir diff" },
-		{ "<leader>ta", "<cmd>TransferUpload .<cr>", desc = "Remote [T]ransfer upload [a]ll" },
-		{ "<leader>tA", "<cmd>TransferDownload .<cr>", desc = "Remote [T]ransfer download [A]ll" },
+		{ "<leader>tf", "<cmd>TransferDirDiff .<cr>", desc = "Remote [T]ransfer dir diff" },
+		{ "<leader>tU", "<cmd>TransferUpload .<cr>", desc = "Remote [T]ransfer [U]pload all" },
+		{ "<leader>tD", "<cmd>TransferDownload .<cr>", desc = "Remote [T]ransfer [D]ownload all" },
 	},
 }
