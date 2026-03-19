@@ -27,13 +27,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					require("telescope.themes").get_dropdown(),
 				},
 				fzf = {},
-				mappings = {
-					i = {
-						["<cr>"] = function(bufnr)
-							require("telescope.actions.set").edit(bufnr, "tab drop")
-						end,
-					},
-				},
 			},
 		})
 
