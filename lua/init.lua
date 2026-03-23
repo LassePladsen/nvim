@@ -14,6 +14,16 @@ vim.cmd([[au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", time
 
 vim.g.have_nerd_font = true
 
+local function path_matches_any_prefix(path, prefixes)
+	for _, prefix in ipairs(prefixes) do
+		if vim.startswith(path, prefix) then
+			return true
+		end
+	end
+
+	return false
+end
+
 -- function that prints objects nicely. NB: use := instead!
 function _G.put(...)
 	local objects = {}
@@ -76,3 +86,29 @@ end, { nargs = 0 })
 -- au("InsertLeave", nil, function()
 -- 	vim.diagnostic.enable(true)
 -- end)
+
+local php_indentexpr_disabled_paths = {
+	"/home/lasse/work/local/sites/lassevippsdev/wp-content/plugins/woo-vipps/payment/",
+	-- add more paths here
+}
+local php_indent_fix_group = vim.api.nvim_create_augroup("php_indent_fix_paths", { clear = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = php_indent_fix_group,
+	callback = function(args)
+		local bufname = vim.api.nvim_buf_get_name(args.buf)
+
+		if vim.bo[args.buf].filetype ~= "php" then
+			return
+		end
+
+		if not path_matches_any_prefix(bufname, php_indentexpr_disabled_paths) then
+			return
+		end
+
+		vim.bo[args.buf].indentexpr = ""
+		vim.bo[args.buf].autoindent = true
+		vim.bo[args.buf].smartindent = false
+		vim.bo[args.buf].cindent = false
+	end,
+})
